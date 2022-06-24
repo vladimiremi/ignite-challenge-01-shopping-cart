@@ -92,7 +92,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       const productExists = cart.find((cartItem) => cartItem.id === productId);
 
       if (!productExists) {
-        throw new Error("Produto não encontrado no carrinho");
+        toast.error("Erro na remoção do produto");
       }
 
       const removeProductFromCart = cart.filter(
@@ -106,7 +106,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         JSON.stringify(removeProductFromCart)
       );
     } catch {
-      // TODO
+      toast.error("Erro na remoção do produto");
     }
   };
 
